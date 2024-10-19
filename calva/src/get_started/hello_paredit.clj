@@ -81,9 +81,7 @@
 ;; Search the Command Palette for *Paredit Kill*
 
 (defn delete
-  "Strings are treated a bit like lists, try
-   *Kill/Delete Sexp Backwards* and others in this
-   documentation string"
+  
   [kill-forward kill-backward]
   [{:zero 0}
    1 2 3
@@ -99,8 +97,8 @@
 ;; list/vector/map/string (or move brackets, depending
 ;; on your perspective.)
 
-(def slurp-barf [{:barf-me "barf-me-too"}
-                 'slurp-me-then-barf-me])
+(def [slurp-barf {:barf-me "barf-me-too"}]
+  'slurp-me-then-barf-me)
 
 ;; === Raise ===
 ;; *Paredit Raise Sexp* replaces the enclosing
@@ -108,9 +106,9 @@
 ;; Raise and Undo a bit in this snippet:
 
 (comment
-  (def raise-me
-    #:or-raise-me {:or-me [1 2 3 4]
-                   :or-this-> #{1 2 3 4}}))
+  #:or-raise-me {:or-me [1 2 3 4]
+                 :or-this-> #{1 2 3 4}}
+  )
 
 ;; Learn much more Paredit: https://calva.io/paredit
 

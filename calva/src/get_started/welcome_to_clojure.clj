@@ -48,6 +48,7 @@
        " to "
        "Clojure!"
        " "
+       1
        "♥️"))
 
 ;; Then see what happens if you throw in some numbers
@@ -109,7 +110,8 @@
   ;; Calls are written as lists with the called thing
   ;; as the first element.
 
-  (def foo "foo") ; Calls the special form `def`,
+  (def foo "foo")
+  ; Calls the special form `def`,
                   ; evaluates to the var it creates
                   ; (More on this later)
 
@@ -236,7 +238,7 @@ like this, if leading spaces are no-no."
   ;; Clojure symbols are defined in namespaces (With
   ;; the `def `special form) where they are reachable
   ;; from any other namespace.
-
+  
   (def foo-2 "foo")
 
   ;; Also know that there is such a thing as the
@@ -244,21 +246,21 @@ like this, if leading spaces are no-no."
   ;; directory in the shell.) When you evaluated the
   ;; `def` form above, you saw where `foo-2` got
   ;; defined.
-
+  
   ;; When evaluating a symbol from any namespace it
   ;; must have been defined, or the compiler will
   ;; complain, and throw
-
+  
   foo-3
 
   ;; The namespace also needs to have been created
-
+  
   some-namespace/foo
 
   ;; If you have loaded the `hello_repl.clj` file
   ;; the `hello-repl` namespace is created and its
   ;; top level symbols are defined.
-
+  
   get-started.hello-repl/greet
 
   (get-started.hello-repl/greet "from the welcome-to-clojure namespace")
@@ -266,13 +268,13 @@ like this, if leading spaces are no-no."
   ;; If those throw, you need to first load
   ;; `hello_repl.clj`, or at least evaluate its `ns`
   ;; form and the `greet` form.
-
+  
   ;; It is not to recommend that you rely on some
   ;; namespace existing like this though. That makes
   ;; your code brittle. It is better to `require`
   ;; the namespace. If you haven't loaded it, you
   ;; can do that in the same go:
-
+  
   (require 'get-started.hello-paredit :reload)
 
   get-started.hello-paredit/strict-greet
@@ -289,13 +291,13 @@ like this, if leading spaces are no-no."
   ;; obvious enough). Examine the `ns` form of this
   ;; file to see why these forms compile without
   ;; complaints:
-
+  
   (doc require) ; Check the output window
   (string/split "foo:bar:baz" #":")
-
+  
   ;; See also:
   ;; https://clojuredocs.org/clojure.core/ns
-
+  
   ;; Any namespace can be created at the REPL. However,
   ;; when a namespace is required, either via the
   ;; `require` or `use` functions, or via the `ns` form
@@ -306,44 +308,44 @@ like this, if leading spaces are no-no."
   ;; Say you have a `src` in your classpath, and a file
   ;; `src/foo/bar_baz.clj` in the project. This file should
   ;; have an `ns` form looking like:
-
+  
   ;(ns foo.bar-baz ,,,)
-
+  
   ;; And you require it using something like:
-
+  
   ;(require 'foo.bar-baz)
-
+  
   ;; Or:
-
+  
   ;(ns welcome-to-clojure
   ;  (:require [foo.bar-baz]))
-
+  
   ;; If you evaluate any of those requires, you will get an
   ;; error message from the repl, telling you which files the
   ;; Clojure Reader looked for to find the namespace definition.
-
+  
   ;; Two common mistakes:
   ;; 1. Naming files using dashes instead of underscores.
   ;; 2. Using `(require ...)` instead of `(:require)` in the
   ;;    `ns` form.
-
+  
   ;; The `ns` form has a lot of functionality and can be a bit
   ;; tricky to figure out. Here's a nice cheat sheet:
   ;; https://gist.github.com/ghoseb/287710/
-
+  
 
   ;; === Namespaced keywords ===
   ;; Keywords can also be namespaced, but they are
   ;; not really registered in a namespace, like
   ;; symbols are, so you can just use them, regardless
-
+  
   :foo-whatever
   :whatever-namespace/foo
 
   ;; The notion about the current namespace exists
   ;; for keywords in that the double-colon prefix
   ;; expands to `:<current-namespace>/foo`:
-
+  
   ::foo
 
   ;; This is important to know about. `:foo` will
@@ -556,7 +558,8 @@ like this, if leading spaces are no-no."
 
   (require 'clojure.walk) ;; you'll need to evaluate this
 
-  (clojure.walk/macroexpand-all '(or a b)) ;; to evaluate this
+  (clojure.walk/macroexpand-all '(or a b))
+  ;; to evaluate this
 
   (macroexpand '(cond
                   y value-if-y
@@ -1043,7 +1046,8 @@ to the compiler") "This is not ignored"
   ;; are your friends here.
 
   (for [x [1 2 3]
-        y [1 2 3 4]]
+        y [1 2 3 4]
+        :when (odd? (+ x y))]
     [x y])
 
   ;; (Yes, it can be solved without `:let` or `:when`.
@@ -1285,7 +1289,7 @@ to the compiler") "This is not ignored"
 
   ;; Thus
 
-  (if (true? 0) :true :false)
+  (if "" :true :false)
 
   ;; == `when` ==
   ;; As mentioned before, `when` is a one-branch
@@ -1293,7 +1297,7 @@ to the compiler") "This is not ignored"
   ;; wrapped in a `do` for you. Try this and then
   ;; try it replacing the `when` with an `if`:
 
-  (when :truthy
+  (if :truthy
     (println "That sounds true to me")
     :truthy-for-you)
 
@@ -1316,7 +1320,7 @@ to the compiler") "This is not ignored"
     (cond
       (= 6 dice-roll)  "Six is as high as it gets"
       (odd? dice-roll) (str "An odd roll " dice-roll " is")
-      :else            (str "Not six, nor odd, instead: " dice-roll)))
+      #_#_:else            (str "Not six, nor odd, instead: " dice-roll)))
 
   ;; The `:else` is just the keyword `:else` which
   ;; evaluates to itself and is truthy. It is the
