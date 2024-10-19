@@ -1,1 +1,9 @@
-{:deps {}}
+{:deps    {
+           org.clojure/clojure           {:mvn/version "1.11.1"}
+           }
+ :paths   ["src"]
+ :aliases {:build {:deps       [io.github.clojure/tools.build {:git/tag "v0.10.5" :git/sha "2a21b7a"}]
+                   :ns-default build}
+           ;:repl  {:main-opts ["-m" "clojure.main"]}
+           }}
+

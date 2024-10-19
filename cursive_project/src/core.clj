@@ -1,5 +1,7 @@
-(ns core)
+(ns core
+  (:gen-class))
 
 
-(defn foo "blah" [x] (println x "hewwo worword"))
 
+(defn -main [& args]
+  (println "Hello, World!"))
