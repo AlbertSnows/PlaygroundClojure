@@ -15,7 +15,7 @@ different story.
 ## REPL
 target top level namespace
 
-you start in user, i dunno what that means
+you start in user, I dunno what that means
 going to other namespaces does not seem good
 instead require them
 or rclick and load file into namespace
