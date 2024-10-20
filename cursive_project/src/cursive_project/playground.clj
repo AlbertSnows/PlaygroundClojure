@@ -1,4 +1,7 @@
-(ns cursive_project.playground)
+(ns cursive-project.playground)
 
 (defn hello-world [_]
-  (println "hello world!"))
+  (println "hello world!")
+  1)
+
+(hello-world 1)

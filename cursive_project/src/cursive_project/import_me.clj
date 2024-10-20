@@ -1,1 +1,1 @@
-(ns cursive_project.import-me)
+(ns cursive-project.import-me)
