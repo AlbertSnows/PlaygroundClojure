@@ -1,6 +1,5 @@
 {:deps {
         io.github.clojure/tools.build {:mvn/version "0.10.5"}
-        ;io.github.clojure/tools.build {:mvn/version "0.10.5"}
         }
  :paths ["src" "resources" "test"]
  :aliases {:run {:main-opts ["-m" "core"]}
