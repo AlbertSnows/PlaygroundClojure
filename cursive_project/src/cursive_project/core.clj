@@ -1,4 +1,4 @@
-(ns core
+(ns cursive-project.core
   (:gen-class))
 
 
